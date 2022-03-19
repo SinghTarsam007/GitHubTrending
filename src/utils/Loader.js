@@ -1,7 +1,7 @@
 import { useNetInfo } from '@react-native-community/netinfo';
 import React, { useEffect } from 'react';
-import { Text, StyleSheet, View } from 'react-native';
-import AnimatedLoader from 'react-native-animated-loader';
+import { StyleSheet, View } from 'react-native';
+import { ColorDotsLoader, TextLoader } from 'react-native-indicator';
 import { useDispatch } from 'react-redux';
 import { getrepos, setLoader } from '../redux/action';
 
@@ -23,26 +23,24 @@ const Loader = () => {
     });
 
     return (
-        <AnimatedLoader
-            visible={true}
-            overlayColor="rgba(255,255,255,0.75)"
-            animationStyle={styles.lottie}
-            speed={1}>
-            <Text style={styles.text}>Loading...</Text>
-        </AnimatedLoader>
+        <View style={styles.body}>
+            <ColorDotsLoader size={40} betweenSpace={15} color2={'blue'} />
+            <TextLoader text={'Loading'} textStyle={styles.text} />
+        </View>
     )
 }
 
 export default Loader;
 
 const styles = StyleSheet.create({
-    lottie: {
-        width: 100,
-        height: 100,
+    body: {
+        alignItems: 'center',
+        marginTop: 250
     },
     text: {
-        fontSize: 30,
-        color: '#000000'
+        fontSize: 40,
+        color: '#000000',
+        marginTop: 20
     }
 })
 

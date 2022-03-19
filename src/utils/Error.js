@@ -22,7 +22,7 @@ const Error = () => {
             <Text style={styles.header}>Something went wrong...</Text>
             <Text style={styles.text}>An alien is probably blocking your signal</Text>
             <Pressable style={({ pressed }) => [
-                { backgroundColor: pressed ? '#65FB8B' : '#ffffff'},
+                { backgroundColor: pressed ? '#65FB8B' : '#ffffff' },
                 styles.button]} onPress={reset}>
                 <Text style={styles.bt}>Try again</Text>
             </Pressable>
