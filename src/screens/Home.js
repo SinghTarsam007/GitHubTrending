@@ -1,8 +1,10 @@
+
+import { useNetInfo } from "@react-native-community/netinfo";
 import React, { useState, useEffect } from "react";
 import { View, FlatList, StyleSheet, RefreshControl, Text } from 'react-native';
 import { useDispatch, useSelector } from "react-redux";
 
-import { getrepos, resetRepos, } from "../redux/action";
+import { getrepos, resetRepos, setLoader, } from "../redux/action";
 import CustomFlatlist from "../utils/CustomFlatList";
 import Error from "../utils/Error";
 import Loader from "../utils/Loader";
@@ -12,16 +14,25 @@ export default function Home({ navigation }) {
   const { repos, isLoader } = useSelector(state => state.userReducer);
   const [refreshing, setRefreshing] = useState(false);
   const dispatch = useDispatch();
+  const netInfo = useNetInfo();
 
 
   useEffect(() => {
-    dispatch(getrepos());
+    if (netInfo.isConnected) {
+      dispatch(getrepos());
+    }
+    else {
+      dispatch(setLoader());
+    }
+
   }, []);
 
   const onRefresh = () => {
     setRefreshing(true);
-    dispatch(resetRepos());
-    dispatch(getrepos());
+    if (netInfo.isConnected) {
+      dispatch(resetRepos());
+      dispatch(getrepos());
+    }
     setRefreshing(false);
   }
 

@@ -1,16 +1,24 @@
+import { useNetInfo } from '@react-native-community/netinfo';
 import React from 'react';
 import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import RNRestart from 'react-native-restart';
-import Home from '../screens/Home';
-
-const reset = () => {
-    RNRestart.Restart();
-}
+import { useDispatch } from 'react-redux';
+import { getrepos } from '../redux/action';
 
 const Error = () => {
+
+    const dispatch = useDispatch();
+    const netInfo = useNetInfo();
+
+    const reset = () => {
+        if (netInfo.isConnected) {
+            dispatch(getrepos());
+        }
+    }
+
     return (
         <View style={styles.body}>
-            <Image source={ require('../assets/error.png')} style={{width: 200, height: 200, marginTop: 100}}/>
+            <Image source={require('../assets/error.png')} style={{ width: 200, height: 200, marginTop: 100 }} />
             <Text style={styles.header}>Something went wrong...</Text>
             <Text style={styles.text}>An alien is probably blocking your signal</Text>
             <Button title="try Again" onPress={reset} />
