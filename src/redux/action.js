@@ -1,4 +1,5 @@
 export const GET_REPOS = 'GET_REPOS';
+export const RESET_REPOS = 'RESET_REPOS';
 
 const API_URL = 'https://gh-trending-api.herokuapp.com/repositories';
 
@@ -25,4 +26,10 @@ export const getrepos = () => {
         console.log(error.message);
         throw error;
     }
+}
+
+export const resetRepos = () => dispatch => {
+    dispatch({
+        type: RESET_REPOS
+    })
 }

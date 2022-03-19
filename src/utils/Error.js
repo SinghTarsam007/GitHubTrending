@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import RNRestart from 'react-native-restart';
+import Home from '../screens/Home';
 
 const reset = () => {
     RNRestart.Restart();
