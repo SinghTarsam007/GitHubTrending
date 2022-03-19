@@ -18,11 +18,11 @@ const CustomFlatlist = (props) => {
       onPress={() => setExanded(!expanded)}>
       <View style={styles.item}>
         <View style={styles.header}>
-        <Image source={{uri: `${props.item.builtBy[0].avatar}` }} style={{height: 50, width: 50, borderRadius: 50, margin: 10}} />
-        <View>
-        <Text style={styles.subtitle}>{props.item.username}</Text>
-        <Text style={styles.title}>{props.item.repositoryName}</Text>
-        </View>
+          <Image source={{ uri: `${props.item.builtBy[0].avatar}` }} style={{ height: 50, width: 50, borderRadius: 50, margin: 10 }} />
+          <View>
+            <Text style={styles.subtitle}>{props.item.username}</Text>
+            <Text style={styles.title}>{props.item.repositoryName}</Text>
+          </View>
         </View>
         {
           expanded &&

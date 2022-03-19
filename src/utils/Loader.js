@@ -1,6 +1,6 @@
 import { useNetInfo } from '@react-native-community/netinfo';
 import React, { useEffect } from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 import AnimatedLoader from 'react-native-animated-loader';
 import { useDispatch } from 'react-redux';
 import { getrepos, setLoader } from '../redux/action';
