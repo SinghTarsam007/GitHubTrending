@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, FlatList, StyleSheet, RefreshControl, Text } from 'react-native';
 import { useDispatch, useSelector } from "react-redux";
 
-import { getrepos, resetRepos,   } from "../redux/action";
+import { getrepos, resetRepos, } from "../redux/action";
 import CustomFlatlist from "../utils/CustomFlatList";
 import Error from "../utils/Error";
 import Loader from "../utils/Loader";
@@ -43,7 +43,6 @@ export default function Home({ navigation }) {
               />
             }
           />
-        
             : <Error />
           : <Loader />
       }
