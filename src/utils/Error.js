@@ -1,7 +1,6 @@
 import { useNetInfo } from '@react-native-community/netinfo';
 import React from 'react';
 import { View, Text, StyleSheet, Button, Image } from 'react-native';
-import RNRestart from 'react-native-restart';
 import { useDispatch } from 'react-redux';
 import { getrepos } from '../redux/action';
 
