@@ -17,12 +17,12 @@ function App() {
           screenOptions={{
             headerTitleAlign: 'center',
             headerStyle: {
-              backgroundColor: '#ddffff'
+              backgroundColor: '#DE0808'
             },
-            headerTintColor: '#0B5508',
+            headerTintColor: '#ffffff',
             headerTitleStyle: {
               fontSize: 30,
-              fontWeight: 'bold'
+              fontWeight: 'bold',
             }
           }}
         >

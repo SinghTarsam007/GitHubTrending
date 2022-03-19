@@ -18,7 +18,10 @@ export default function Home({ navigation }) {
 
 
   useEffect(() => {
+    if(netInfo.isConnected)
+    {
         dispatch(getrepos());
+    }
   }, []);
 
   const onRefresh = () => {

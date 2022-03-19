@@ -1,6 +1,6 @@
 import { useNetInfo } from '@react-native-community/netinfo';
 import React from 'react';
-import { View, Text, StyleSheet, Button, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { getrepos, resetRepos } from '../redux/action';
 
@@ -18,10 +18,14 @@ const Error = () => {
 
     return (
         <View style={styles.body}>
-            <Image source={require('../assets/error.png')} style={{ width: 200, height: 200, marginTop: 100 }} />
+            <Image source={require('../assets/error.png')} style={{ width: 300, height: 300, marginTop: 100 }} />
             <Text style={styles.header}>Something went wrong...</Text>
             <Text style={styles.text}>An alien is probably blocking your signal</Text>
-            <Button title="try Again" onPress={reset} />
+            <Pressable style={({ pressed }) => [
+                { backgroundColor: pressed ? '#65FB8B' : '#ffffff'},
+                styles.button]} onPress={reset}>
+                <Text style={styles.bt}>Try again</Text>
+            </Pressable>
         </View>
     )
 }
@@ -29,15 +33,33 @@ const Error = () => {
 const styles = StyleSheet.create({
     body: {
         alignItems: 'center',
+        backgroundColor: '#EDFEF6',
+        height: 1000
     },
     header: {
         fontSize: 25,
+        color: '#000000',
         fontWeight: 'bold',
-        margin: 20
+        marginTop: 30
     },
     text: {
         fontSize: 15,
-        margin: 20
+        marginBottom: 20,
+        marginTop: 10
+    },
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 4,
+        borderColor: '#09DF3F',
+        borderWidth: 1,
+        width: 260
+    },
+    bt: {
+        fontSize: 20,
+        fontWeight: 'bold'
     }
 });
 
