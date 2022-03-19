@@ -2,7 +2,7 @@ import { useNetInfo } from '@react-native-community/netinfo';
 import React from 'react';
 import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { getrepos } from '../redux/action';
+import { getrepos, resetRepos } from '../redux/action';
 
 const Error = () => {
 
@@ -11,6 +11,7 @@ const Error = () => {
 
     const reset = () => {
         if (netInfo.isConnected) {
+            dispatch(resetRepos());
             dispatch(getrepos());
         }
     }
