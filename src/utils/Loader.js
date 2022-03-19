@@ -1,8 +1,20 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useEffect } from 'react';
+import { Text, StyleSheet } from 'react-native';
 import AnimatedLoader from 'react-native-animated-loader';
+import { useDispatch } from 'react-redux';
+import { setLoader } from '../redux/action';
 
 const Loader = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const timer = setTimeout(() => dispatch(setLoader()),
+            10000
+        );
+        return () => clearTimeout(timer);
+    });
+
     return (
         <AnimatedLoader
             visible={true}
@@ -22,8 +34,8 @@ const styles = StyleSheet.create({
         height: 100,
     },
     text: {
-        fontSize: 40,
+        fontSize: 30,
         color: '#000000'
     }
 })
- 
+

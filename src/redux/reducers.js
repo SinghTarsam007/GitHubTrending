@@ -6,13 +6,13 @@ const initialState = {
 }
 
 function userReducer(state = initialState, action) {
-    switch(action.type){
+    switch (action.type) {
         case GET_REPOS:
-            return {...state, repos: action.payload, isLoader: true };
-        case RESET_REPOS:
-            return {initialState};
+            return { ...state, repos: action.payload, isLoader: true };
         case LOADER:
-            return {...state, isLoader: true};
+            return { ...state, isLoader: true };
+        case RESET_REPOS:
+            return { initialState };
         default:
             return state;
     }
