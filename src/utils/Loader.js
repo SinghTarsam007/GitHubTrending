@@ -27,6 +27,7 @@ const Loader = () => {
             <ColorDotsLoader size={40} betweenSpace={15} color2={'blue'} />
             <TextLoader text={'Loading'} textStyle={styles.text} />
         </View>
+
     )
 }
 

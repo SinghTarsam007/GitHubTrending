@@ -1,7 +1,7 @@
 
 import { useNetInfo } from "@react-native-community/netinfo";
 import React, { useState, useEffect } from "react";
-import { View, FlatList, StyleSheet, RefreshControl, Text } from 'react-native';
+import { View, FlatList, StyleSheet, RefreshControl } from 'react-native';
 import { useDispatch, useSelector } from "react-redux";
 
 import { getrepos, resetRepos } from "../redux/action";
