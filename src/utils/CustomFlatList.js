@@ -1,12 +1,25 @@
-import { faCircle, faCodeFork, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faCodeFork, faStar, faBookmark as SolidfaBookmark } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, View, Image } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, removeItem } from '../redux/action';
 
 const CustomFlatlist = (props) => {
 
+  const { favourites } = useSelector(state => state.userReducer);
   const [expanded, setExanded] = useState(false);
-  const [url, setUrl] = useState('')
+  const dispatch = useDispatch();
+
+  const update = (item) => {
+    if (favourites.includes(item)) {
+      dispatch(removeItem(favourites.indexOf(item, 0)));
+    }
+    else {
+      dispatch(addItem(item));
+    }
+  }
 
   return (
     <Pressable
@@ -23,6 +36,25 @@ const CustomFlatlist = (props) => {
             <Text style={styles.subtitle}>{props.item.username}</Text>
             <Text style={styles.title}>{props.item.repositoryName}</Text>
           </View>
+          {
+            !expanded &&
+            <View style={styles.button}>
+              <Pressable
+                style={({ pressed }) => [
+                  {
+                    backgroundColor: pressed ? '#F4E24B' : '#ffff'
+                  }]}
+                onPress={() => update(props.item)}
+              >
+                {
+                  favourites.includes(props.item) ?
+                    <FontAwesomeIcon icon={SolidfaBookmark} size={20} color={'#FFC300'} />
+                    :
+                    <FontAwesomeIcon icon={faBookmark} size={20} color={'#FFC300'} />
+                }
+              </Pressable>
+            </View>
+          }
         </View>
         {
           expanded &&
@@ -47,7 +79,7 @@ const CustomFlatlist = (props) => {
           </View>
         }
       </View>
-    </Pressable>
+    </Pressable >
   )
 }
 
@@ -59,14 +91,14 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   card: {
     marginLeft: 20,
   },
   title: {
     color: '#000000',
-    fontSize: 20,
+    fontSize: 18,
     margin: 5,
     marginLeft: 20,
   },
@@ -75,6 +107,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     margin: 5,
     marginLeft: 20,
+    width: 220
   },
   item: {
     borderWidth: 1,
@@ -85,12 +118,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     flex: 1,
     flexDirection: 'row',
-    marginRight: 18 
+    marginRight: 18
   },
   text: {
     fontSize: 18,
     marginLeft: 3,
+  },
+  button: {
+    margin: 5,
+    alignItems: 'stretch'
   }
-
 });
 export default CustomFlatlist;

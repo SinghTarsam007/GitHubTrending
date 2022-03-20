@@ -1,6 +1,8 @@
 export const GET_REPOS = 'GET_REPOS';
 export const RESET_REPOS = 'RESET_REPOS';
 export const LOADER = 'LOADER';
+export const ADD = 'ADD';
+export const REMOVE = 'REMOVE';
 
 const API_URL = 'https://gh-trending-api.herokuapp.com/repositories';
 
@@ -40,3 +42,18 @@ export const setLoader = () => dispatch => {
         type: LOADER
     })
 }
+
+export const addItem = (item) => dispatch => {
+    dispatch({
+        type: ADD,
+        payload: item
+    })
+}
+
+export const removeItem = (item) => dispatch => {
+    dispatch({
+        type: REMOVE,
+        payload: item
+    })
+}
+
