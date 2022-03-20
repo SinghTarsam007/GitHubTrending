@@ -54,14 +54,15 @@ const CustomFlatlist = (props) => {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   header: {
     flex: 1,
     flexDirection: 'row'
   },
   card: {
-    marginLeft: 90,
+    marginLeft: 20,
   },
   title: {
     color: '#000000',
@@ -83,7 +84,8 @@ const styles = StyleSheet.create({
     margin: 5,
     fontSize: 18,
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginRight: 18 
   },
   text: {
     fontSize: 18,

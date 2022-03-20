@@ -1,6 +1,6 @@
 import { useNetInfo } from '@react-native-community/netinfo';
 import React from 'react';
-import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable, Alert } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { getrepos, resetRepos } from '../redux/action';
 
@@ -13,6 +13,9 @@ const Error = () => {
         if (netInfo.isConnected) {
             dispatch(resetRepos());
             dispatch(getrepos());
+        }
+        else{
+            Alert.alert('Warning', 'No internet connection!');
         }
     }
 
