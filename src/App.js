@@ -41,7 +41,7 @@ function App() {
               }
               return <FontAwesomeIcon icon={iconName} color={color} size={25} />
             },
-            tabBarActiveTintColor: 'tomato',
+            tabBarActiveTintColor: '#DE0808',
             tabBarInactiveTintColor: 'gray',
             tabBarLabelStyle: {
               fontSize: 17,
