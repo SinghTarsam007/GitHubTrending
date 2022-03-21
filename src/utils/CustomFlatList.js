@@ -2,7 +2,7 @@ import { faCircle, faCodeFork, faStar, faBookmark as SolidfaBookmark } from '@fo
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, View, Image } from 'react-native';
+import { Pressable, StyleSheet, Text, View, Image, Linking } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, removeItem } from '../redux/action';
 
@@ -60,7 +60,7 @@ const CustomFlatlist = (props) => {
           expanded &&
           <View style={styles.card}>
             <View style={styles.logo_text}>
-              <Text style={styles.text}>{props.item.url}</Text>
+              <Text style={styles.link} onPress={() => { Linking.openURL(props.item.url) }}>{props.item.url}</Text>
             </View>
             <View style={styles.body}>
               <View style={styles.logo_text}>
@@ -121,12 +121,18 @@ const styles = StyleSheet.create({
     marginRight: 18
   },
   text: {
-    fontSize: 18,
+    fontSize: 16,
     marginLeft: 3,
+    color: '#000000'
   },
   button: {
     margin: 5,
     alignItems: 'stretch'
+  },
+  link: {
+    fontSize: 16,
+    marginLeft: 3,
+    color: '#3388FF'
   }
 });
 export default CustomFlatlist;

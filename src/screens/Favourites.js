@@ -20,7 +20,7 @@ export default function Favourites({ navigation }) {
                     <View style={styles.empty}>
                         <Image source={require('../assets/empty.jpg')} style={{ height: 300, width: 300, marginTop: 100 }} />
                         <Text style={styles.text}>Nothing in Favourites !</Text>
-                        <Text>Add some repository to favourites List</Text>
+                        <Text>Add some repositories to favourites List</Text>
                     </View>
             }
         </View>
