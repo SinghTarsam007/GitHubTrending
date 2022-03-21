@@ -8,7 +8,7 @@ import Home from './screens/Home';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Favourites from './screens/Favourites';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faBookmark } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const Stack = createNativeStackNavigator();
@@ -37,7 +37,7 @@ function App() {
                 iconName = faGithub
               }
               else {
-                iconName = faBookmark
+                iconName = faStar
               }
               return <FontAwesomeIcon icon={iconName} color={color} size={25} />
             },
@@ -54,7 +54,7 @@ function App() {
             component={Home}
           />
           <Tabs.Screen
-            name='Favourites'
+            name='Starred'
             component={Favourites} />
         </Tabs.Navigator>
       </NavigationContainer>

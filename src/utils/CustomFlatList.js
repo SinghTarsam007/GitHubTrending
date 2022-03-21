@@ -1,5 +1,5 @@
-import { faCircle, faCodeFork, faStar, faBookmark as SolidfaBookmark } from '@fortawesome/free-solid-svg-icons';
-import { faBookmark } from '@fortawesome/free-regular-svg-icons'
+import { faCircle, faCodeFork, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, View, Image, Linking } from 'react-native';
@@ -48,9 +48,9 @@ const CustomFlatlist = (props) => {
               >
                 {
                   favourites.includes(props.item) ?
-                    <FontAwesomeIcon icon={SolidfaBookmark} size={20} color={'#FFC300'} />
+                    <FontAwesomeIcon icon={faStar} size={25} color={'#FFC300'} />
                     :
-                    <FontAwesomeIcon icon={faBookmark} size={20} color={'#FFC300'} />
+                    <FontAwesomeIcon icon={emptyStar} size={25} color={'#FFC300'} />
                 }
               </Pressable>
             </View>
@@ -65,7 +65,12 @@ const CustomFlatlist = (props) => {
             <View style={styles.body}>
               <View style={styles.logo_text}>
                 <FontAwesomeIcon icon={faCircle} color={'red'} />
-                <Text style={styles.text}>{props.item.language}</Text>
+                {
+                  props.item.language ?
+                    <Text style={styles.text}>{props.item.language}</Text>
+                    :
+                    <Text style={styles.text}>NA</Text>
+                }
               </View>
               <View style={styles.logo_text}>
                 <FontAwesomeIcon icon={faStar} color={'#FFC300'} />
